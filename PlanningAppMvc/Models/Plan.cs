@@ -14,5 +14,7 @@ namespace PlanningAppMvc.Models
         public DateTime DoneDate { get; set; }
         [Required]
         public DateTime CreatDate { get; set; }
+        [Required]
+        public bool IsDone { get; set; }
     }
 }

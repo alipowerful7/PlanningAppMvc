@@ -17,7 +17,9 @@ namespace PlanningAppMvc.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var plan = await _context.Plans.ToListAsync();
+            DateTime d = DateTime.Now;
+            d = d.AddDays(3);
+            var plan = await _context.Plans.Where(p => p.IsDone == false && (DateTime.Now.Date <= p.DoneDate && p.DoneDate <= d)).ToListAsync();
             plan = plan.OrderByDescending(p => p.DoneDate).Reverse().ToList();
             return View(plan);
         }

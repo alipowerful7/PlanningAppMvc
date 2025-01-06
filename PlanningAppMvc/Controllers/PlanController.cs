@@ -29,7 +29,7 @@ namespace PlanningAppMvc.Controllers
                 await _context.Plans.AddAsync(plan);
                 await _context.SaveChangesAsync();
             }
-            return Redirect("/Home/Index");
+            return Redirect("/");
         }
     }
 }
