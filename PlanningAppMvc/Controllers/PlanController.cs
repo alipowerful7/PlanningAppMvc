@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PlanningAppMvc.Models;
 
 namespace PlanningAppMvc.Controllers
@@ -9,6 +10,20 @@ namespace PlanningAppMvc.Controllers
         public PlanController(PlannigContext context)
         {
             _context = context;
+        }
+        public async Task<IActionResult> Index(string? mode = "All")
+        {
+            var plan = await _context.Plans.ToListAsync();
+            if (mode == "Done")
+            {
+                plan = await _context.Plans.Where(p => p.IsDone == true).ToListAsync();
+            }
+            else
+            {
+                plan = await _context.Plans.Where(p => p.IsDone == false).ToListAsync();
+            }
+            plan = plan.OrderByDescending(p => p.DoneDate).Reverse().ToList();
+            return View(plan);
         }
         public IActionResult Creat()
         {
