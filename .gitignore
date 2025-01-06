@@ -1,3 +1,26 @@
-.vs/
+# فایل‌ها و پوشه‌های کامپایل‌شده
 /bin/
 /obj/
+
+# تنظیمات محلی IDE (مثل Visual Studio)
+.vs/
+
+# فایل‌های لاگ
+*.log
+
+# فایل‌های موقت و پشتیبان
+*.tmp
+*.bak
+
+# فایل‌های NuGet
+packages/
+project.lock.json
+
+# فایل‌های پیکربندی build
+*.suo
+*.user
+*.rsuser
+
+# فایل‌های منتشرشده و تنظیمات شخصی
+*.publishsettings
+*.pubxml
