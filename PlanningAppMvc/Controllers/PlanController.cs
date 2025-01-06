@@ -85,5 +85,14 @@ namespace PlanningAppMvc.Controllers
             await _context.SaveChangesAsync();
             return Redirect("/");
         }
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var plan = await _context.Plans.FindAsync(id);
+            return View(plan);
+        }
     }
 }

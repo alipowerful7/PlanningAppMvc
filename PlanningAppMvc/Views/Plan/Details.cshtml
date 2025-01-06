@@ -1,0 +1,35 @@
+﻿@model Plan
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    tr, td, table {
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+<div style="width:100%;" align="center">
+    <table align="center" style="width:100%;">
+        <tr align="center">
+            <td style="font-weight:bold;">Title</td>
+            <td style="font-weight:bold;">Description</td>
+            <td style="font-weight:bold;">Creat Data</td>
+            <td style="font-weight:bold;">Done Data</td>
+            <td style="font-weight:bold;">Is Done</td>
+        </tr>
+        <tr align="center">
+            <td>@Model.Title</td>
+            <td>@Model.Description</td>
+            <td>@Model.CreatDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
+            <td>@Model.DoneDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
+            @if (Model.IsDone == true)
+            {
+                <td><a class="btn btn-success" style="cursor:default;">Done</a></td>
+            }
+            else
+            {
+                <td><a class="btn btn-danger" style="cursor:default;">Not Done</a></td>
+            }
+        </tr>
+    </table>
+</div>
