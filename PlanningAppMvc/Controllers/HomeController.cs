@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PlanningAppMvc.Models;
 
 namespace PlanningAppMvc.Controllers
@@ -7,15 +8,18 @@ namespace PlanningAppMvc.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly PlannigContext _context;
+        public HomeController(ILogger<HomeController> logger, PlannigContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var plan = await _context.Plans.ToListAsync();
+            plan = plan.OrderByDescending(p => p.DoneDate).Reverse().ToList();
+            return View(plan);
         }
 
         public IActionResult Privacy()

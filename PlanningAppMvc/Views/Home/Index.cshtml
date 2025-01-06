@@ -1,8 +1,29 @@
-﻿@{
+﻿@model IEnumerable<Plan>
+@{
     ViewData["Title"] = "Home Page";
+    int counter = 1;
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    tr, td, table {
+        border: 1px solid black;
+        padding: 13px;
+    }
+</style>
+<div style="width:100%;" align="center">
+    <table align="center" style="width:100%;">
+        <tr align="center">
+            <td style="font-weight:bold;">#</td>
+            <td style="font-weight:bold;">Title</td>
+            <td style="font-weight:bold;">Done Data</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr align="center">
+                <td>@counter</td>
+                <td>@item.Title</td>
+                <td>@item.DoneDate</td>
+            </tr>
+            counter++;
+        }
+    </table>
 </div>
