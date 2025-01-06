@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<Plan>
 @{
     ViewData["Title"] = "Home Page";
-    int counter = 1;
 }
 <style>
     tr, td, table {
@@ -16,21 +15,6 @@
     }
     else
     {
-        <table align="center" style="width:100%;">
-            <tr align="center">
-                <td style="font-weight:bold;">#</td>
-                <td style="font-weight:bold;">Title</td>
-                <td style="font-weight:bold;">Done Data</td>
-            </tr>
-            @foreach (var item in Model)
-            {
-                <tr align="center">
-                    <td>@counter</td>
-                    <td>@item.Title</td>
-                    <td>@item.DoneDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
-                </tr>
-                counter++;
-            }
-        </table>
+        <partial name="_Table" />
     }
 </div>

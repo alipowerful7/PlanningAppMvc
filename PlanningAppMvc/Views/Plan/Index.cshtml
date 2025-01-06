@@ -1,14 +1,7 @@
 ﻿@model IEnumerable<Plan>
 @{
     ViewData["Title"] = "Home Page";
-    int counter = 1;
 }
-<style>
-    tr, td, table {
-        border: 1px solid black;
-        padding: 13px;
-    }
-</style>
 <div style="width:100%;" align="center">
     <a asp-controller="Plan" asp-action="Index" asp-route-mode="All" class="btn btn-dark">All</a>
     <a asp-controller="Plan" asp-action="Index" asp-route-mode="Done" class="btn btn-success">Just Done</a>
@@ -21,21 +14,6 @@
     }
     else
     {
-        <table align="center" style="width:100%;">
-            <tr align="center">
-                <td style="font-weight:bold;">#</td>
-                <td style="font-weight:bold;">Title</td>
-                <td style="font-weight:bold;">Done Data</td>
-            </tr>
-            @foreach (var item in Model)
-            {
-                <tr align="center">
-                    <td>@counter</td>
-                    <td>@item.Title</td>
-                    <td>@item.DoneDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
-                </tr>
-                counter++;
-            }
-        </table>
+        <partial name="_Table" />
     }
 </div>

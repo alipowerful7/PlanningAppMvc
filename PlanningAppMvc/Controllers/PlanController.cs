@@ -46,5 +46,20 @@ namespace PlanningAppMvc.Controllers
             }
             return Redirect("/");
         }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var plan = await _context.Plans.FindAsync(id);
+            if (plan == null)
+            {
+                return NotFound();
+            }
+            _context.Plans.Remove(plan);
+            await _context.SaveChangesAsync();
+            return Redirect("/Plan/Index");
+        }
     }
 }

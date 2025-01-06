@@ -1,0 +1,27 @@
+﻿@{ 
+    int counter = 1;
+}
+<style>
+    tr, td, table {
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+<table align="center" style="width:100%;">
+    <tr align="center">
+        <td style="font-weight:bold;">#</td>
+        <td style="font-weight:bold;">Title</td>
+        <td style="font-weight:bold;">Done Data</td>
+        <td style="font-weight:bold;">Actions</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr align="center">
+            <td>@counter</td>
+            <td>@item.Title</td>
+            <td>@item.DoneDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
+            <td><a asp-controller="Plan" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+        </tr>
+        counter++;
+    }
+</table>
