@@ -20,7 +20,7 @@
             <td>@counter</td>
             <td>@item.Title</td>
             <td>@item.DoneDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
-            <td><a asp-controller="Plan" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+            <td><a asp-controller="Plan" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a> <a asp-controller="Plan" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-danger">Edit</a></td>
         </tr>
         counter++;
     }

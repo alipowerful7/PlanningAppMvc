@@ -61,5 +61,29 @@ namespace PlanningAppMvc.Controllers
             await _context.SaveChangesAsync();
             return Redirect("/Plan/Index");
         }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var plan = await _context.Plans.FindAsync(id);
+            return View(plan);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditPost(Plan plan)
+        {
+            var planToUpdate = await _context.Plans.FindAsync(plan.Id);
+            if (planToUpdate == null)
+            {
+                return NotFound();
+            }
+            planToUpdate.Title = plan.Title;
+            planToUpdate.Description = plan.Description;
+            planToUpdate.DoneDate = plan.DoneDate;
+            _context.Plans.Update(planToUpdate);
+            await _context.SaveChangesAsync();
+            return Redirect("/");
+        }
     }
 }

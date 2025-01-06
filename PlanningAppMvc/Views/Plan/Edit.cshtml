@@ -1,0 +1,18 @@
+﻿@model Plan
+@{
+    ViewData["Title"] = "Edit";
+}
+@if (TempData["CreatError"] != null)
+{
+    <p>@TempData["CreatError"]</p>
+}
+<form method="post" asp-controller="Plan" asp-action="EditPost">
+    <input type="text" asp-for="@Model.Title" placeholder="Title" value="@Model.Title"/>
+    <br />
+    <textarea asp-for="@Model.Description" placeholder="Description" style="resize:vertical;">@Model.Description</textarea>
+    <br />
+    <input type="datetime" asp-for="@Model.DoneDate" placeholder="Time" value="@Model.DoneDate" />
+    <br />
+    <input type="hidden" asp-for="@Model.Id" />
+    <input type="submit" value="Submit" />
+</form>
