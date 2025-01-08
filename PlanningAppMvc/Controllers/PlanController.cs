@@ -16,19 +16,19 @@ namespace PlanningAppMvc.Controllers
             var plan = await _context.Plans.ToListAsync();
             if (mode == null || mode == "All")
             {
-                plan = await _context.Plans.ToListAsync();
+                plan = await _context.Plans.Where(p => p.DoneDate >= DateTime.Now.Date).ToListAsync();
             }
             else if (mode == "Done")
             {
-                plan = await _context.Plans.Where(p => p.IsDone == true).ToListAsync();
+                plan = await _context.Plans.Where(p => p.IsDone == true && p.DoneDate >= DateTime.Now.Date).ToListAsync();
             }
             else if (mode == "NotDone")
             {
-                plan = await _context.Plans.Where(p => p.IsDone == false).ToListAsync();
+                plan = await _context.Plans.Where(p => p.IsDone == false && p.DoneDate >= DateTime.Now.Date).ToListAsync();
             }
             else
             {
-                plan = await _context.Plans.ToListAsync();
+                plan = await _context.Plans.Where(p => p.DoneDate >= DateTime.Now.Date).ToListAsync();
             }
             plan = plan.OrderByDescending(p => p.DoneDate).Reverse().ToList();
             return View(plan);
@@ -47,11 +47,8 @@ namespace PlanningAppMvc.Controllers
                 TempData["CreatError"] = "Done date must be greater than or equal to today";
                 return Redirect("/Plan/Creat");
             }
-            if (ModelState.IsValid)
-            {
-                await _context.Plans.AddAsync(plan);
-                await _context.SaveChangesAsync();
-            }
+            await _context.Plans.AddAsync(plan);
+            await _context.SaveChangesAsync();
             return Redirect("/");
         }
         public async Task<IActionResult> Delete(int? id)
