@@ -14,13 +14,21 @@ namespace PlanningAppMvc.Controllers
         public async Task<IActionResult> Index(string? mode = "All")
         {
             var plan = await _context.Plans.ToListAsync();
-            if (mode == "Done")
+            if (mode == null || mode == "All")
+            {
+                plan = await _context.Plans.ToListAsync();
+            }
+            else if (mode == "Done")
             {
                 plan = await _context.Plans.Where(p => p.IsDone == true).ToListAsync();
             }
-            else
+            else if (mode == "NotDone")
             {
                 plan = await _context.Plans.Where(p => p.IsDone == false).ToListAsync();
+            }
+            else
+            {
+                plan = await _context.Plans.ToListAsync();
             }
             plan = plan.OrderByDescending(p => p.DoneDate).Reverse().ToList();
             return View(plan);
@@ -93,6 +101,21 @@ namespace PlanningAppMvc.Controllers
             }
             var plan = await _context.Plans.FindAsync(id);
             return View(plan);
+        }
+        public async Task<IActionResult> DonePlan(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var plan = await _context.Plans.FindAsync(id);
+            if (plan == null)
+            {
+                return NotFound();
+            }
+            plan.IsDone = true;
+            await _context.SaveChangesAsync();
+            return Redirect("/Plan/Index");
         }
     }
 }

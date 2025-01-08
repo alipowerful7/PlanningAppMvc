@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     int counter = 1;
 }
 <style>
@@ -20,7 +20,13 @@
             <td>@counter</td>
             <td>@item.Title</td>
             <td>@item.DoneDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
-            <td><a asp-controller="Plan" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a> <a asp-controller="Plan" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a> <a asp-controller="Plan" asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a></td>
+            <td>
+                <a asp-controller="Plan" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a> <a asp-controller="Plan" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a> <a asp-controller="Plan" asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a>
+                @if (item.IsDone != true)
+                {
+                    <a asp-controller="Plan" asp-action="DonePlan" asp-route-id="@item.Id" class="btn btn-success">Done</a>
+                }
+            </td>
         </tr>
         counter++;
     }
