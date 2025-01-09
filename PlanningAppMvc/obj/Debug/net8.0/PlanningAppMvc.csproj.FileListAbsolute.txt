@@ -170,3 +170,4 @@ C:\Users\PC\source\repos\PlanningAppMvc\PlanningAppMvc\bin\Debug\net8.0\runtimes
 C:\Users\PC\source\repos\PlanningAppMvc\PlanningAppMvc\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\PC\source\repos\PlanningAppMvc\PlanningAppMvc\obj\Debug\net8.0\PlanningAppMvc.csproj.AssemblyReference.cache
 C:\Users\PC\source\repos\PlanningAppMvc\PlanningAppMvc\obj\Debug\net8.0\Planning.6EB4F1E6.Up2Date
+C:\Users\PC\source\repos\PlanningAppMvc\PlanningAppMvc\obj\Debug\net8.0\PlanningAppMvc.sourcelink.json
