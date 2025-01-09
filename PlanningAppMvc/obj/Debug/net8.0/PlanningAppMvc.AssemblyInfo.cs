@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlanningAppMvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0d559c5572729ef7c854a75bdae4e0d3025ca90")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5cbf551b04dd83bbb8026f9529565a398bc6fd09")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlanningAppMvc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlanningAppMvc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

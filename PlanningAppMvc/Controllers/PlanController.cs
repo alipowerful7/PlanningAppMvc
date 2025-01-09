@@ -16,7 +16,7 @@ namespace PlanningAppMvc.Controllers
             var plan = await _context.Plans.ToListAsync();
             if (mode == null || mode == "All")
             {
-                plan = await _context.Plans.Where(p => p.DoneDate >= DateTime.Now.Date).ToListAsync();
+                plan = await _context.Plans.Where(p => p.DoneDate >= DateTime.Now.Date || p.IsDone == true).ToListAsync();
             }
             else if (mode == "Done")
             {
