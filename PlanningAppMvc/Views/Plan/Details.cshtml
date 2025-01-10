@@ -20,8 +20,8 @@
         <tr align="center">
             <td>@Model.Title</td>
             <td>@Model.Description</td>
-            <td>@Model.CreatDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
-            <td>@Model.DoneDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
+            <td>@Model.CreatDate.ToShamsi()</td>
+            <td>@Model.DoneDate.ToShamsi()</td>
             @if (Model.IsDone == true)
             {
                 <td><a class="btn btn-success" style="cursor:default;">Done</a></td>
