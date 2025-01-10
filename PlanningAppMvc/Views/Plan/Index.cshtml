@@ -3,10 +3,19 @@
     ViewData["Title"] = "Home Page";
 }
 <div style="width:100%;" align="center">
-    <a asp-controller="Plan" asp-action="Index" asp-route-mode="All" class="btn btn-dark">All</a>
-    <a asp-controller="Plan" asp-action="Index" asp-route-mode="Done" class="btn btn-success">Just Done</a>
-    <a asp-controller="Plan" asp-action="Index" asp-route-mode="NotDone" class="btn btn-danger">Not Done</a>
-    <br />
+    <div>
+        <div align="left" style="display:inline;">
+            <form asp-controller="Plan" asp-action="Search" method="get">
+                <input type="text" name="search" value="@ViewData["SearchValue"]" />
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+        <div align="center" style="display:inline;">
+            <a asp-controller="Plan" asp-action="Index" asp-route-mode="All" class="btn btn-dark">All</a>
+            <a asp-controller="Plan" asp-action="Index" asp-route-mode="Done" class="btn btn-success">Just Done</a>
+            <a asp-controller="Plan" asp-action="Index" asp-route-mode="NotDone" class="btn btn-danger">Not Done</a>
+        </div>
+    </div>
     <br />
     @if (Model.Count() == 0)
     {

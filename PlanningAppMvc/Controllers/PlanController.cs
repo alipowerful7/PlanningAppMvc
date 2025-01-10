@@ -114,5 +114,11 @@ namespace PlanningAppMvc.Controllers
             await _context.SaveChangesAsync();
             return Redirect("/Plan/Index");
         }
+        public async Task<IActionResult> Search(string? search)
+        {
+            var plan = await _context.Plans.Where(p => p.Title!.Contains(search!)).ToListAsync();
+            ViewData["SearchValue"] = search;
+            return View(viewName: "Index", model: plan);
+        }
     }
 }
