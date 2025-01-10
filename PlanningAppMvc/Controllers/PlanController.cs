@@ -41,6 +41,7 @@ namespace PlanningAppMvc.Controllers
         public async Task<IActionResult> CreatPost(Plan plan)
         {
             plan.CreatDate = DateTime.Now;
+            plan.DoneDate = plan.DoneDate.ToMiladi();
             TempData["CreatError"] = null;
             if (plan.DoneDate.Date < DateTime.Now.Date)
             {
@@ -85,7 +86,7 @@ namespace PlanningAppMvc.Controllers
             }
             planToUpdate.Title = plan.Title;
             planToUpdate.Description = plan.Description;
-            planToUpdate.DoneDate = plan.DoneDate;
+            planToUpdate.DoneDate = plan.DoneDate.ToMiladi();
             _context.Plans.Update(planToUpdate);
             await _context.SaveChangesAsync();
             return Redirect("/");
